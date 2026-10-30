@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Appu's Birthday Universe ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Kannada:wght@400;600&family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div id="hearts-layer"></div>
+
+<!-- STAGE 1: KANNADA KAVANA -->
+<section id="stage1" class="stage active">
+  <div class="kavana-box">
+    <div class="tiny">ಒಂದು ಚಿಕ್ಕ ಕವನ… ನಿನಗಾಗಿ 🌙</div>
+    <button id="startBtn" class="glow-btn">💌 Let's start</button>
+    <div id="kavana" class="kavana"></div>
+    <button id="toLights" class="glow-btn hidden">🎆 Start glow</button>
+  </div>
+</section>
+
+<!-- STAGE 2: LIGHT SHOW -->
+<section id="stage2" class="stage">
+  <canvas id="fireworks"></canvas>
+  <div id="lightText" class="light-text">This s for Youuuuu❤️✨</div>
+  <div id="lightText" class="light-text">I love you chinnnii❤️</div>
+</section>
+
+<!-- STAGE 3: I LOVE YOU -->
+<section id="stage3" class="stage">
+  <div class="iloveyou">
+    <div class="ily-big">I ❤️ U</div>
+    <div class="ily-kn">ಐ ಲವ್ ಯೂ ಅಪ್ಪು</div>
+    <div class="ily-small">ತುಂಬಾ ತುಂಬಾ… ಗುರು 💗</div>
+    <button id="enterBtn" class="glow-btn">🌌 ನಿನ್ನ ಪುಟ್ಟ ಪ್ರಪಂಚಕ್ಕೆ ಬಾ</button>
+  </div>
+</section>
+
+<!-- MAIN SITE -->
+<main id="main" class="hidden">
+
+  <header class="hero">
+    <div class="doll d1">🧸</div><div class="doll d2">🐻</div><div class="doll d3">🎀</div>
+    <div class="cake">🎂</div>
+    <h1 id="heroTitle" class="script"></h1>
+    <p class="sub">Happy 27th Birthday, my Appu · my Guru · my Bangaru 💖</p>
+    <p class="sub kn">ಹುಟ್ಟುಹಬ್ಬದ ಹಾರ್ದಿಕ ಶುಭಾಶಯಗಳು, ನನ್ನ ಜೀವ! 🥹</p>
+    <p class="quote">If I could give you one thing, it would be the ability to see yourself through my eyes. Only then would you know how special you are to me.</p>
+    <button id="confettiBtn" class="glow-btn">🎉 Tap for confetti</button>
+    <div class="scroll-hint">scroll down ↓</div>
+  </header>
+
+  <section class="block" id="childhood">
+    <h2 class="script">🧒 Little Guru, Before I Knew Him</h2>
+    <p class="lead">ಈ ಚಿಕ್ಕ ಮುಖದಲ್ಲೇ ಇವತ್ತಿನ ನನ್ನ ಅಪ್ಪು ಅಡಗಿದ್ದ. Every photo here is a reason I'm grateful for the boy who grew into you.</p>
+    <div class="polaroids" id="gChild"></div>
+  </section>
+
+  <section class="block" id="same">
+    <h2 class="script">🌕 Born on the Same Day</h2>
+    <p class="lead">3 November 1999 — Gouri Hunnime. Out of all the days in the year, we two were born on the very same one. That is not a coincidence, Appu… that is destiny. ✨<br><span class="kn">ಗೌರಿ ಹುಣ್ಣಿಮೆಯ ದಿನ ನಾವಿಬ್ಬರೂ ಹುಟ್ಟಿದ್ದು — ಇದು ದೇವರು ಬರೆದ ಕಥೆ 🌕</span></p>
+    <div class="moon">🌕</div>
+  </section>
+
+  <section class="block" id="puri">
+    <h2 class="script">🙏 My Modern Purohita</h2>
+    <p class="lead">Everyone calls him Golden Gouri. Where my story began — one look at the matha, and my heart never looked away.</p>
+    <div class="polaroids" id="gPuri"></div>
+  </section>
+
+  <section class="block" id="us">
+    <h2 class="script">💑 Us — Hand in Hand</h2>
+    <p class="lead">Your hand in mine feels like home. Tap any photo to open it.</p>
+    <div class="polaroids" id="gUs"></div>
+  </section>
+
+  <section class="block" id="videos">
+    <h2 class="script">🎬 Moments That Move</h2>
+    <p class="lead">Some memories are too alive for a photo. Tap to play. 🥹</p>
+    <div class="vids" id="gVideos"></div>
+  </section>
+
+  <section class="block" id="letterBlock">
+    <h2 class="script">💌 A Letter I Could Never Say Out Loud</h2>
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <div class="paper" id="paper"></div>
+      <div class="env-front">Tap to open 💗</div>
+    </div>
+  </section>
+
+  <section class="block" id="reasons">
+    <h2 class="script">💗 Things I Want You To Know</h2>
+    <p class="lead">Tap each glowing heart.</p>
+    <div class="hearts-grid" id="heartsGrid"></div>
+    <div class="reason-box" id="reasonBox">…</div>
+  </section>
+
+  <section class="block" id="journey">
+    <h2 class="script">🕰️ Our Journey</h2>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <section class="block final" id="final">
+    <p class="lead">Before you leave, there's one last thing…</p>
+    <div class="big-heart" id="bigHeart">❤️</div>
+    <div id="finalPhotos"></div>
+    <p class="final-msg hidden" id="finalMsg">
+      Out of all the people in this world, I'm so glad my story has you in it.<br>
+      <span class="kn">ಈ ಪ್ರಪಂಚದಲ್ಲಿ ಇಷ್ಟೊಂದು ಜನರಿದ್ದರೂ, ನನ್ನ ಕಥೆಯಲ್ಲಿ ನೀನಿರೋದು ನನ್ನ ಭಾಗ್ಯ.</span><br><br>
+      Happy Birthday, Appu. I love you. ❤️
+    </p>
+  </section>
+</main>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox hidden"><div class="lb-inner"><img id="lbImg" alt=""><p id="lbCap"></p></div></div>
+
+<!-- Music player -->
+<div id="player" class="player hidden">
+  <button id="prev">⏮</button>
+  <button id="play">▶</button>
+  <button id="next">⏭</button>
+  <span id="songName">♪</span>
+  <div class="eq"><i></i><i></i><i></i></div>
+</div>
+
+<audio id="audio"></audio>
+<script src="script.js"></script>
+</body>
+</html>
