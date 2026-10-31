@@ -86,7 +86,7 @@ const TIMELINE = [
   { when: "The day I knew", text: "I realised this was not just liking — it was love. Tumba preeti." },
   { when: "3 Nov 1999", text: "Gouri Hunnime — the same day, two souls were born. Yours and mine. 🌕" },
   { when: "Holding hands", text: "The first time our hands met, the whole world went quiet." },
-  { when: "Today", text: "You turn 27, and on our shared birthday I am the luckiest girl to celebrate you. 🎂" }
+  { when: "Today", text: "You turn 28, and on our shared birthday I am the luckiest girl to celebrate you. 🎂" }
 ];
 
 // Songs: put MP3 files in the music/ folder, then edit names here
