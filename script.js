@@ -91,10 +91,10 @@ const TIMELINE = [
 
 // Songs: put MP3 files in the music/ folder, then edit names here
 const SONGS = [
-  { file: "music/song1.mp3", name: "Kannada love song 1 💗" },
-  { file: "music/song2.mp3", name: "Kannada love song 2 🎶" },
-  { file: "music/song3.mp3", name: "Hindi love song 1 ❤️" },
-  { file: "music/song4.mp3", name: "Hindi love song 2 🌙" }
+  { file: "music/audio1.mp3", name: "Kannada love song 1 💗" },
+  { file: "music/audio2.mp3", name: "Kannada love song 2 🎶" },
+  { file: "music/audio3.mp3", name: "Hindi love song 1 ❤️" },
+  { file: "music/audio4.mp3", name: "Hindi love song 2 🌙" }
 ];
 /* ============================================================ */
 
