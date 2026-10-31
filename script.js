@@ -93,8 +93,7 @@ const TIMELINE = [
 const SONGS = [
   { file: "music/audio1.mp3", name: "Kannada love song 1 💗" },
   { file: "music/audio2.mp3", name: "Kannada love song 2 🎶" },
-  { file: "music/audio3.mp3", name: "Hindi love song 1 ❤️" },
-  { file: "music/audio4.mp3", name: "Hindi love song 2 🌙" }
+  { file: "music/audio3.mp3", name: "Hindi love song 1 ❤️" }
 ];
 /* ============================================================ */
 
@@ -298,28 +297,105 @@ $("bigHeart").onclick = () => {
   });
 };
 
-/* ---------- music ---------- */
-function loadSong(i){
+
+/* ---------- MOBILE-FRIENDLY MUSIC PLAYER ---------- */
+
+function loadSong(i) {
   songIdx = (i + SONGS.length) % SONGS.length;
-  audio.src = SONGS[songIdx].file; $("songName").textContent = "♪ " + SONGS[songIdx].name;
+
+  audio.pause();
+  audio.src = SONGS[songIdx].file;
+  audio.currentTime = 0;
+
+  $("songName").textContent = "♪ " + SONGS[songIdx].name;
 }
-function startMusic(){
-  if(wasStarted) return; wasStarted = true;
+
+async function startMusic() {
   loadSong(0);
-  audio.play().catch(() => {});
-  $("play").textContent = "⏸";
+
+  try {
+    await audio.play();
+    wasStarted = true;
+    $("play").textContent = "⏸";
+    $("player").classList.remove("paused");
+  } catch (error) {
+    wasStarted = false;
+    $("play").textContent = "▶";
+    $("songName").textContent = "Tap the music button to play ❤️";
+    console.error("Music playback failed:", error);
+  }
 }
-$("play").onclick = () => {
-  if(audio.paused){ audio.play().catch(()=>{}); $("play").textContent = "⏸"; $("player").classList.remove("paused"); }
-  else { audio.pause(); $("play").textContent = "▶"; $("player").classList.add("paused"); }
+
+// Play and pause button
+$("play").onclick = async () => {
+  try {
+    if (audio.paused) {
+      if (!audio.src) loadSong(songIdx);
+      await audio.play();
+      wasStarted = true;
+      $("play").textContent = "⏸";
+      $("player").classList.remove("paused");
+    } else {
+      audio.pause();
+      $("play").textContent = "▶";
+      $("player").classList.add("paused");
+    }
+  } catch (error) {
+    console.error("Play button error:", error);
+    $("songName").textContent = "Please tap Play again ❤️";
+  }
 };
-$("next").onclick = () => { loadSong(songIdx+1); audio.play().catch(()=>{}); };
-$("prev").onclick = () => { loadSong(songIdx-1); audio.play().catch(()=>{}); };
-audio.addEventListener("ended", () => { loadSong(songIdx+1); audio.play().catch(()=>{}); });
-// if a song file is missing, skip to the next one
-let errCount = 0;
-audio.addEventListener("playing", () => { errCount = 0; });
+
+// Next song
+$("next").onclick = async () => {
+  loadSong(songIdx + 1);
+  try {
+    await audio.play();
+    wasStarted = true;
+    $("play").textContent = "⏸";
+    $("player").classList.remove("paused");
+  } catch (error) {
+    console.error("Next song error:", error);
+  }
+};
+
+// Previous song
+$("prev").onclick = async () => {
+  loadSong(songIdx - 1);
+  try {
+    await audio.play();
+    wasStarted = true;
+    $("play").textContent = "⏸";
+    $("player").classList.remove("paused");
+  } catch (error) {
+    console.error("Previous song error:", error);
+  }
+};
+
+// Automatically play the next song
+audio.addEventListener("ended", async () => {
+  loadSong(songIdx + 1);
+  try {
+    await audio.play();
+  } catch (error) {
+    console.error("Next track autoplay blocked:", error);
+    $("play").textContent = "▶";
+  }
+});
+
+// Update player when audio starts or pauses
+audio.addEventListener("playing", () => {
+  wasStarted = true;
+  $("play").textContent = "⏸";
+  $("player").classList.remove("paused");
+});
+
+audio.addEventListener("pause", () => {
+  $("play").textContent = "▶";
+  $("player").classList.add("paused");
+});
+
 audio.addEventListener("error", () => {
-  if(!wasStarted || ++errCount >= SONGS.length) { $("songName").textContent = "♪ add songs to the music/ folder"; return; }
-  setTimeout(() => { loadSong(songIdx+1); audio.play().catch(()=>{}); }, 300);
+  console.error("Audio file could not load:", audio.currentSrc);
+  $("songName").textContent = "Song could not load. Check music folder.";
 });
